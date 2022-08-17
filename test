@@ -2,3 +2,4 @@ test line 1
 test line 2
 test line 3
 git log --pretty=format:"%h; author: %cn; date: %ci; commit message:%s"  rc-0.0.2...rc-0.0.1
+test line 1
