@@ -38,7 +38,7 @@ jobs:
         id: relese-tag-match
         with:
           text: ${{ github.ref }}
-          regex: 'rc-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+          regex: 'refs\/tags\/rc-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 
   show_tags:
     needs: [branch_has_tag]
