@@ -27,6 +27,7 @@ jobs:
           npm run test
 
   branch_has_tag:
+    needs: [build]
     runs-on: ubuntu-latest
     outputs:
       branch_regex: ${{ steps.branch_has_tag.outputs.match }}
