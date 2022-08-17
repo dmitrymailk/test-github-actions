@@ -42,7 +42,7 @@ jobs:
 
   show_tags:
     needs: [branch_has_tag]
-    if: needs.branch_has_tag.outputs.branch_regex
+    if: ${{needs.branch_has_tag.outputs.branch_regex != ''}}
     strategy:
       matrix:
         node-version: [16.16.0]
