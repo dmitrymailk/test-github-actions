@@ -1,0 +1,57 @@
+name: typescipt_action
+ 
+on:
+  push:
+    branches: 
+      - "**"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        node-version: [16.16.0]
+ 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install    
+      - name: run linter
+        run: | 
+          npm run lint
+      - name: run test
+        run: | 
+          npm run test
+
+  branch_has_tag:
+    runs-on: ubuntu-latest
+    outputs:
+      branch_regex: ${{ steps.branch_has_tag.outputs.match }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: relese-tag-match
+        with:
+          text: ${{ github.ref_name }}
+          regex: 'rc-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+
+  show_tags:
+    needs: [branch_has_tag]
+    if: needs.branch_has_tag.outputs.branch_regex
+    strategy:
+      matrix:
+        node-version: [16.16.0]
+ 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v4
+        with: 
+          python-version: '3.8'
+          run: |
+            python show_tags.py --new_tag=${{ github.ref_name }} --actor=${{ github.actor }}
