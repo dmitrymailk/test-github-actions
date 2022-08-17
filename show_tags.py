@@ -2,6 +2,7 @@ import subprocess
 import argparse
 
 
+print("Hello world")
 if __name__ == "__main__":
     print("Hello world")
     # parser = argparse.ArgumentParser(description="Parsing parameters")
