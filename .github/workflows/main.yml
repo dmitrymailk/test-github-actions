@@ -2,8 +2,6 @@ name: typescipt_action
  
 on:
   push:
-    branches: 
-      - "**"
     tags:
       - "**"
 
