@@ -37,7 +37,7 @@ jobs:
       - uses: actions-ecosystem/action-regex-match@v2
         id: relese-tag-match
         with:
-          text: ${{ github.ref_name }}
+          text: ${{ github.ref }}
           regex: 'rc-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 
   show_tags:
