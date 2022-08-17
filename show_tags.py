@@ -5,10 +5,14 @@ import argparse
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Parsing parameters")
     params = [
-        ("--actor", {"dest": "actor", "type": str, "default": ""},)(
+        (
+            "--actor",
+            {"dest": "actor", "type": str, "default": ""},
+        ),
+        (
             "--new_tag",
             {"dest": "new_tag", "type": str, "default": ""},
-        )
+        ),
     ]
     for name, param in params:
         parser.add_argument(name, **param)
