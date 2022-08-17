@@ -44,9 +44,6 @@ jobs:
   show_tags:
     needs: [branch_has_tag]
     if: ${{needs.branch_has_tag.outputs.branch_regex != ''}}
-    strategy:
-      matrix:
-        node-version: [16.16.0]
  
     runs-on: ubuntu-latest
     steps:
@@ -57,4 +54,4 @@ jobs:
           python-version: '3.8'
           run: |
             output=$(python show_tags.py --new_tag=${{ github.ref_name }} --actor=${{ github.actor }})
-            echo $output
+            echo "$output"
