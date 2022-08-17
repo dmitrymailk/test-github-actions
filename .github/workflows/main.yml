@@ -30,7 +30,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     outputs:
-      branch_regex: ${{ steps.branch_has_tag.outputs.match }}
+      branch_regex: ${{ steps.relese-tag-match.outputs.match }}
     steps:
       - uses: actions/checkout@v2
 
