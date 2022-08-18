@@ -40,7 +40,7 @@ if last_version > 0:
         "log",
         "--oneline",
         # "--pretty=format:'%h; author: %cn; date: %ci; commit message:%s'",
-        tags_command,
+        # tags_command,
     ]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print("ok 2")
