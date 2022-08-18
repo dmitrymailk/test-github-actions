@@ -61,7 +61,7 @@ jobs:
       - name: get commits beetween tags and send to tracker
         env: 
           ISSUE_NAME: ${{ secrets.ISSUE_NAME }}
-          TRACKER_TOCKEN: ${{ secrets.TRACKER_TOKEN }}
+          TRACKER_TOKEN: ${{ secrets.TRACKER_TOKEN }}
           ORG_ID: ${{ secrets.ORG_ID }}
         run: |
           output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}")
