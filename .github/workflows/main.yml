@@ -58,7 +58,7 @@ jobs:
       - name: run python script
         run: |
           output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}")
-          echo "::set-output name=some_output::$output"
+          ::set-output name=some_output::"$output"
         id: step1
       - name: show tags
         run: echo "${{steps.step1.outputs.some_output}}"
