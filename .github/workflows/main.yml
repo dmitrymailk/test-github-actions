@@ -52,9 +52,12 @@ jobs:
         uses: actions/setup-python@v4
         with: 
           python-version: '3.8'
+      - name: Git branch name
+        id: git-branch-name
+        uses: EthanSK/git-branch-name-action@v1
       - name: run python script
         run: |
-          output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}" --branch="${{ github.ref }}")
+          output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}" --branch="${GIT_BRANCH_NAME}")
           echo "::set-output name=some_output::$output"
         id: step1
       - name: show tags

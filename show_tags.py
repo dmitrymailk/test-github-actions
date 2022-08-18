@@ -28,7 +28,7 @@ args = {arg[0]: arg[1] for arg in args}
 actor = args["actor"]
 new_tag = args["new_tag"]
 branch = args["branch"]
-branch = branch.split("/")[-1]
+# branch = branch.split("/")[-1]
 
 print(actor, new_tag, branch)
 
