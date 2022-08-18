@@ -42,6 +42,7 @@ issue = client.issues[issue_name]
 comment_text = f"""
 ответственный за релиз: {actor}
 {message}
+Собрали docker image c тегом {release_tag}
 """
 date = datetime.datetime.now()
 summury = f"Релиз {release_tag} от {date}"
