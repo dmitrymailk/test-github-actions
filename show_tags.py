@@ -28,13 +28,13 @@ last_version = int(new_tag.split(".")[-1])
 if last_version > 0:
     print("ok 1")
     previous_version = last_version - 1
-    tags_command = f"HEAD...rc-0.0.{previous_version-1}"
+    tags_command = f"HEAD...rc-0.0.{previous_version}"
     cmd = [
         "git",
         "log",
         "--oneline",
-        # "--pretty=format:'%h; author: %cn; date: %ci; commit message:%s'",
-        # tags_command,
+        "--pretty=format:'%h; author: %cn; date: %ci; commit message:%s'",
+        tags_command,
     ]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print("ok 2")
