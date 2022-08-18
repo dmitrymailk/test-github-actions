@@ -41,6 +41,7 @@ if last_version > 0:
     output, error = proc.communicate()
 
     print(output.decode("ascii"))
+    print(error.decode("ascii"))
 else:
     cmd = [
         "git",
