@@ -28,6 +28,7 @@ print(actor, new_tag)
 
 last_version = int(new_tag.split(".")[-1])
 if last_version > 0:
+    print("ok 1")
     previous_version = last_version - 1
     tags_command = f"rc-0.0.{last_version}...rc-0.0.{previous_version}"
     cmd = [
@@ -37,19 +38,20 @@ if last_version > 0:
         tags_command,
     ]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
+    print("ok 2")
     output, error = proc.communicate()
 
     print(output.decode("ascii"))
     print(error.decode("ascii"))
 else:
+    print("ok 3")
     cmd = [
         "git",
         "log",
         "--oneline",
     ]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
+    print("ok 4")
     output, error = proc.communicate()
 
     print(output.decode("ascii"))
