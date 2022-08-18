@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    if: ${{ 0 }}
     strategy:
       matrix:
         node-version: [16.16.0]
@@ -28,8 +27,7 @@ jobs:
           npm run test
 
   branch_has_tag:
-    # needs: [build]
-    # if: ${{ 0 }}
+    needs: [build]
     runs-on: ubuntu-latest
     outputs:
       branch_regex: ${{ steps.relese-tag-match.outputs.match }}
