@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: ${{ 0}}
+    if: ${{ 0 }}
     strategy:
       matrix:
         node-version: [16.16.0]
@@ -29,6 +29,7 @@ jobs:
 
   branch_has_tag:
     # needs: [build]
+    # if: ${{ 0 }}
     runs-on: ubuntu-latest
     outputs:
       branch_regex: ${{ steps.relese-tag-match.outputs.match }}
@@ -54,13 +55,13 @@ jobs:
         uses: actions/setup-python@v4
         with: 
           python-version: '3.8'
-      # - name: run python script
-      #   run: |
-      #     output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}")
-      #     echo "::set-output name=some_output::$output"
-      #   id: step1
-      # - name: show tags
-      #   run: echo "${{steps.step1.outputs.some_output}}"
-      - name: "Show git log"
+      - name: run python script
         run: |
-          git log 
+          output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}")
+          echo "::set-output name=some_output::$output"
+        id: step1
+      - name: show tags
+        run: echo "${{steps.step1.outputs.some_output}}"
+      # - name: "Show git log"
+      #   run: |
+      #     git log 
