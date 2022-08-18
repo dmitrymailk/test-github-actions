@@ -81,5 +81,5 @@ jobs:
           TRACKER_TOKEN: ${{ secrets.TRACKER_TOKEN }}
           ORG_ID: ${{ secrets.ORG_ID }}
         run: |
-          output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }} --release_tag="${{ steps.tag.outputs.tag }}")
+          output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}" --release_tag="${{ steps.tag.outputs.tag }}")
           python ./send_info.py --message="$output" --actor="${{ github.actor }}" 
