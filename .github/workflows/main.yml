@@ -65,4 +65,4 @@ jobs:
           ORG_ID: ${{ secrets.ORG_ID }}
         run: |
           output=$(python ./show_tags.py --new_tag="${{ github.ref_name }}" --actor="${{ github.actor }}")
-          python ./send_info.py --message="${{ $output }}" --actor="${{ github.actor }}" 
+          python ./send_info.py --message="$output" --actor="${{ github.actor }}" 
