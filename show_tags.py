@@ -30,7 +30,7 @@ last_version = int(new_tag.split(".")[-1])
 if last_version > 0:
     print("ok 1")
     previous_version = last_version - 1
-    tags_command = f"rc-0.0.{last_version}...rc-0.0.{previous_version}"
+    tags_command = f"HEAD...rc-0.0.{previous_version}"
     cmd = [
         "git",
         "log",
