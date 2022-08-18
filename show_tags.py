@@ -24,6 +24,8 @@ args = {arg[0]: arg[1] for arg in args}
 actor = args["actor"]
 new_tag = args["new_tag"]
 
+print(actor, new_tag)
+
 last_version = int(new_tag.split(".")[-1])
 if last_version > 0:
     previous_version = last_version - 1
