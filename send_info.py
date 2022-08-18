@@ -2,6 +2,8 @@ from yandex_tracker_client import TrackerClient
 import argparse
 import os
 import datetime
+import requests
+import json
 
 
 parser = argparse.ArgumentParser(description="Parsing parameters")
@@ -34,14 +36,32 @@ token = os.environ["TRACKER_TOKEN"]
 org_id = os.environ["ORG_ID"]
 issue_name = os.environ["ISSUE_NAME"]
 
-client = TrackerClient(token=token, org_id=org_id)
 
+client = TrackerClient(token=token, org_id=org_id)
 issue = client.issues[issue_name]
 comment_text = f"""
 ответственный за релиз: {actor}
 {message}
 """
-comment = issue.comments.create(text=comment_text)
 date = datetime.datetime.now()
 summury = f"Релиз {release_tag} от {date}"
-issue.update(summary=summury, description=comment_text)
+try:
+    r = requests.patch(
+        f"https://api.tracker.yandex.net/v2/issues/{issue_name}",
+        headers={
+            "Authorization": f"OAuth {token}",
+            "X-Org-ID": org_id,
+        },
+        data=json.dumps(
+            {
+                "summary": summury,
+                "description": comment_text,
+            }
+        ),
+    )
+
+    r.raise_for_status()
+except requests.exceptions.HTTPError as e:
+    print(e)
+    print(r.text)
+    raise e
