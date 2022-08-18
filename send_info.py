@@ -44,6 +44,7 @@ comment_text = f"""
 {message}
 Собрали docker image c тегом {release_tag}
 """
+issue.comments.create(text=comment_text)
 date = datetime.datetime.now()
 summury = f"Релиз {release_tag} от {date}"
 try:
