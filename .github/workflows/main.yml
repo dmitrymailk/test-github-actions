@@ -1,4 +1,4 @@
-name: typescipt_action
+name: main_pipeline
  
 on:
   push:
