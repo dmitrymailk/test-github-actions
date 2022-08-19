@@ -2,6 +2,8 @@ name: main_pipeline
  
 on:
   push:
+    branches:
+      - "**"
     tags:
       - "**"
 
